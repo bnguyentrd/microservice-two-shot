@@ -2,10 +2,12 @@
 
 Team:
 
-* Bobby - Which microservice?
-* Anthony - Which microservice?
+* Bobby - Hat
+* Anthony - Shoes
 
 ## Design
+Webpage > shop > categories > sizes
+
 
 ## Shoes microservice
 
@@ -21,7 +23,8 @@ Bobby's explanations
 123123123
 123123
 abcabc
-abcabc
+abcabcasdfasdfasedfweaskl;djf;ak
+asdfasdfas
 
 Explain your models and integration with the wardrobe
 microservice, here.

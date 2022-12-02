@@ -2,8 +2,8 @@
 
 Team:
 
-* Person 1 - Which microservice?
-* Person 2 - Which microservice?
+* Bobby - Which microservice?
+* Anthony - Which microservice?
 
 ## Design
 
@@ -15,6 +15,7 @@ Explain your models and integration with the wardrobe
 microservice, here.
 
 ## Hats microservice
+Bobby's explanations 
 
 Explain your models and integration with the wardrobe
 microservice, here.

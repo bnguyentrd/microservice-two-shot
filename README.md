@@ -9,6 +9,8 @@ Team:
 
 ## Shoes microservice
 
+Anthony's explanations
+
 Explain your models and integration with the wardrobe
 microservice, here.
 

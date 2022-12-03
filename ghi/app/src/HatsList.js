@@ -12,7 +12,7 @@ function HatsList(props) {
                 </tr>
             </thead>
             <tbody>
-                {items.map(hats => {
+                {props.hats.map(hats => {
                     return (
                         <tr key={hats.id}>
                             <td>{ hats.fabric }</td>

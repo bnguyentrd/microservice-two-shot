@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainPage from './MainPage';
 import Nav from './Nav';
 import HatsList from './HatsList';
+import HatsForm from './HatsForm';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="hats" element={<HatsList />} />
+          <Route path="hats/new" element={<HatsForm />} />
         </Routes>
       </div>
     </BrowserRouter>

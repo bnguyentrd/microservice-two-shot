@@ -7,19 +7,21 @@ import ShoesList from './ShoesList';
 import ShoesForm from './ShoesForm';
 
 function App(props) {
-  // if (props.shoes === undefined) {
-  //   return null;
-  // }
+  if (props.hats === undefined) {
+    return null;
+  }
+
+
   return (
     <BrowserRouter>
       <Nav />
       <div className="container">
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="hats" element={<HatsList />} />
-            <Route path="new" element={<HatsForm />} />
           <Route path="shoes" element={<ShoesList shoes={props.shoes} />} />
             <Route path="new" element={<ShoesForm />} />
+          <Route path="hats" element={<HatsList hats={props.hats} />} />
+          <Route path="hats/new" element={<HatsForm />} />
         </Routes>
       </div>
     </BrowserRouter>

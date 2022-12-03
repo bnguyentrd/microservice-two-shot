@@ -9,7 +9,7 @@ sys.path.append("")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "shoes_project.settings")
 django.setup()
 
-from api.shoes_rest.models import BinVO
+from shoes_rest.models import BinVO
 
 def get_bins():
     response = requests.get("http://wardrobe-api:8000/api/bins")

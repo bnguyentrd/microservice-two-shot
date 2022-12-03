@@ -67,9 +67,9 @@ def api_list_shoes(request, bin_vo_id=None):
                 status=400,
             )
 
-        shoe = Shoes.objects.create(**content)
+        shoes = Shoes.objects.create(**content)
         return JsonResponse(
-            shoe,
+            shoes,
             encoder=ShoesDetailEncoder,
             safe=False,
         )
@@ -78,29 +78,29 @@ def api_list_shoes(request, bin_vo_id=None):
 def api_show_shoes(request, pk):
     if request.method == "GET":
         try:
-            shoe = Shoes.objects.get(id=pk)
+            shoes = Shoes.objects.get(id=pk)
             return JsonResponse(
-                shoe,
+                shoes,
                 encoder=ShoesDetailEncoder,
                 safe=False
             )
         except Shoes.DoesNotExist:
-            return JsonResponse({"message": "Invalid shoe ID"}, status=400)
+            return JsonResponse({"message": "Invalid shoes ID"}, status=400)
     elif request.method == "DELETE":
         try:
             count, _ = Shoes.objects.filter(id=pk).delete()
             return JsonResponse({"deleted": count > 0})
         except Shoes.DoesNotExist:
-            return JsonResponse({"message": "Invalid shoe ID"}, status=400)
+            return JsonResponse({"message": "Invalid shoes ID"}, status=400)
     else: # PUT
         try:
             content = json.loads(request.body)
             Shoes.objects.filter(id=pk).update(**content)
-            shoe = Shoes.objects.get(id=pk)
+            shoes = Shoes.objects.get(id=pk)
             return JsonResponse(
-                shoe,
+                shoes,
                 encoder=ShoesDetailEncoder,
                 safe=False
             )
         except Shoes.DoesNotExist:
-            return JsonResponse({"message": "Invalid shoe ID"}, status=400)
+            return JsonResponse({"message": "Invalid shoes ID"}, status=400)

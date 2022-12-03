@@ -5,9 +5,9 @@ class ShoesForm extends React.Component {
         super(props);
         this.state = {
             manufacturer: "",
-            model_name: "",
+            modelName: "",
             color: "",
-            pictured_url: "",
+            picturedUrl: "",
             bin: "",
             bins: [],
 
@@ -25,7 +25,12 @@ class ShoesForm extends React.Component {
     async handleSubmit(event) {
         event.preventDefault();
         const data = {...this.state};
+        data.model_name = data.modelName;
+        data.pictured_url = data.picturedUrl;
         delete data.bins;
+        delete data.modelName;
+        delete data.picturedUrl;
+        console.log(data);
 
 
         const shoesUrl = 'http://localhost:8080/api/shoes/';
@@ -42,9 +47,9 @@ class ShoesForm extends React.Component {
             console.log(newShoes);
             this.setState({
                 manufacturer: "",
-                model_name: "",
+                modelName: "",
                 color: "",
-                pictured_url: "",
+                picturedUrl: "",
                 bin: "",
             });
         }

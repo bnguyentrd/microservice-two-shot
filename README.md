@@ -13,15 +13,9 @@ Webpage > shop > categories > sizes
 
 ## Shoes microservice
 
-Anthony's explanations
-123123123
-123123123
-abcabcabc
+ShoesForm.js > class ShoesForm constructor >in this.state i have bin: "" and bins: []
+explanation: empty array for the drop down bar and the empty string to show that single piece of information.
 
-New things added here ()()()()()()()
-
-Explain your models and integration with the wardrobe
-microservice, here.
 
 ## Hats microservice
 Bobby's explanations

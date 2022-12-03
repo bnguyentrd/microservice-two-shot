@@ -8,10 +8,11 @@ function HatsList(props) {
                     <th>Style Name</th>
                     <th>Color</th>
                     <th>Picture</th>
+                    <th>Location</th>
                 </tr>
             </thead>
             <tbody>
-                {items.map((hats) => {
+                {items.map(hats => {
                     return (
                         <tr key={hats.id}>
                             <td>{ hats.fabric }</td>
@@ -26,3 +27,5 @@ function HatsList(props) {
         </table>
     )
 }
+
+export default HatsList;

@@ -94,8 +94,6 @@ class HatsForm extends React.Component {
             this.setState({ locations: data.locations });
         }
     }
-
-
     render() {
         return (
             <div className="row">

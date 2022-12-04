@@ -60,13 +60,13 @@ def api_show_hat(request, pk):
 
 @require_http_methods(["GET", "POST"])
 def api_list_hats(request):
-    if request.method == "GET": #listing out the hats
+    if request.method == "GET": 
         hats = Hats.objects.all()
         return JsonResponse(
             {"hats": hats},
             encoder = HatListEncoder,
         )
-    else: #creating a hat
+    else: 
         content = json.loads(request.body)
 
         try:

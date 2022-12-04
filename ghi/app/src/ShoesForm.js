@@ -147,7 +147,7 @@ class ShoesForm extends React.Component {
                                 id="bin"
                                 className="form-select">
                                 <option value="">Choose a bin</option>
-                                {this.state.bin.map(bin => {
+                                {this.state.bins.map(bin => {
                                     return (
                                         <option key={bin.href} value={bin.href}>
                                             {bin.closet_name}

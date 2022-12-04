@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
+import './index.css';
 
 
 
@@ -16,7 +17,6 @@ function HatsList() {
       }
     };
     useEffect(() => {getHats()}, []);
-
     const deleteHat = (id) => async () => {
 
 
@@ -27,25 +27,19 @@ function HatsList() {
                 method: "delete" 
             }
         );
-
         if (deleteResponse.ok) {
           const refreshUrl = "http://localhost:8090/api/hats/";
           const reloadResponse = await fetch(refreshUrl);
           const newHats = await reloadResponse.json();
           setHats(newHats.hats);
         }
-
       } 
       catch (err) {
-        
       }
     };
-
     if (hats === undefined) {
       return null;
     }
-
-
 
 
     return (
@@ -62,15 +56,15 @@ function HatsList() {
           </tr>
         </thead>
         <tbody>
-          {hats.map((hat) => {
+          {hats.map((hats) => {
             return (
-              <tr key={hat.id}>
-                <td>{ hat.fabric }</td>
-                <td>{ hat.style_name }</td>
-                <td>{ hat.color }</td>
-                <td>{ hat.picture_url }</td>
-                <td>{ hat.location }</td>
-                <td><button onClick={deleteHat(hat.id)}>Delete</button></td>
+              <tr key={hats.id}>
+                <td>{ hats.fabric }</td>
+                <td>{ hats.style_name }</td>
+                <td>{ hats.color }</td>
+                <td><img src={ hats.picture_url } /></td>
+                <td>{ hats.location }</td>
+                <td><button onClick={deleteHat(hats.id)}>Delete</button></td>
               </tr>
             );
           })}

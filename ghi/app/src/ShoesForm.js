@@ -2,16 +2,15 @@ import React from 'react';
 
 class ShoesForm extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
-            manufacturer: "",
-            modelName: "",
-            color: "",
-            picturedUrl: "",
-            bin: "",
+            manufacturer: '',
+            model_name: '',
+            pictured_url: '',
+            color: '',
+            bin: '',
             bins: [],
-
-        }
+         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleManufacturerChange = this.handleManufacturerChange.bind(this);
@@ -21,17 +20,11 @@ class ShoesForm extends React.Component {
         this.handleBinChange = this.handleBinChange.bind(this);
     }
 
-
     async handleSubmit(event) {
         event.preventDefault();
-        const data = {...this.state};
-        data.model_name = data.modelName;
-        data.pictured_url = data.picturedUrl;
+        const data = { ...this.state };
         delete data.bins;
-        delete data.modelName;
-        delete data.picturedUrl;
         console.log(data);
-
 
         const shoesUrl = 'http://localhost:8080/api/shoes/';
         const fetchConfig = {
@@ -43,18 +36,19 @@ class ShoesForm extends React.Component {
         };
         const response = await fetch(shoesUrl, fetchConfig);
         if (response.ok) {
-            const newShoes = await response.json();
-            console.log(newShoes);
-            this.setState({
-                manufacturer: "",
-                modelName: "",
-                color: "",
-                picturedUrl: "",
-                bin: "",
-            });
+          const newShoe = await response.json();
+          console.log(newShoe);
+
+          const cleared={
+            manufacturer: '',
+            model_name: '',
+            pictured_url: '',
+            color: '',
+            bin: '',
+          };
+          this.setState(cleared);
         }
     }
-
 
     handleManufacturerChange(event) {
         const value = event.target.value;
@@ -83,14 +77,11 @@ class ShoesForm extends React.Component {
 
     async componentDidMount() {
         const url = 'http://localhost:8100/api/bins/';
-
         const response = await fetch(url);
-
         if (response.ok) {
-            const data = await response.json();
-            this.setState({ locations: data.locations });
+            const data = await response.json()
+            this.setState({bins: data.bins});
         }
-
     }
 
     render() {
@@ -149,10 +140,10 @@ class ShoesForm extends React.Component {
                                 <option value="">Choose a bin</option>
                                 {this.state.bins.map(bin => {
                                     return (
-                                        <option key={bin.href} value={bin.href}>
-                                            {bin.closet_name}
+                                        <option key={bin.href} value={bin.id}>
+                                            {bin.bin_number} - {bin.closet_name} / {bin.bin_size}
                                         </option>
-                                    );
+                                    )
                                 })}
                             </select>
                         </div>

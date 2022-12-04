@@ -1,49 +1,75 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import "./index.css";
 
-function ShoesList(props) {
-    const [items, setItems] = React.useState(props.shoes);
-    const deleteItem = (id) => async () => {
-        const url = `http://localhost:8080/api/shoes/${id}`;
-        const fetchConfig = {
-            method: "delete"
-        }
-        const response = await fetch(url, fetchConfig)
-        if (response.ok) {
-            const deleted = await response.json();
-        }
-        setItems((items) => items.filter(item => {
-            return item.id !== id}));
-        }
-        console.log(items)
+function ShoesList() {
+    const [shoes, setShoes] = useState([]);
+    const getShoes = async () => {
+      const shoesUrl = `http://localhost:8080/api/shoes/`;
+      const response = await fetch(shoesUrl);
+      if (response.ok) {
+        const listShoes = await response.json();
+        setShoes(listShoes.shoes);
+      }
+    };
+    useEffect(() => {
+      getShoes();
+    }, []);
+    const deleteShoe = (id) => async () => {
+      try {
+        const url = `http://localhost:8080/api/shoes/${id}/`;
+        const deleteResponse = await fetch(url,
+            {
+                method: "delete"
+            }
+        );
 
+        if (deleteResponse.ok) {
+          const reloadUrl = `http://localhost:8080/api/shoes/`;
+          const reloadResponse = await fetch(reloadUrl);
+          const newShoes = await reloadResponse.json();
+          setShoes(newShoes.shoes);
+        }
+
+      }
+      catch (err) {
+
+      }
+    };
+
+    if (shoes === undefined) {
+      return null;
+    }
 
     return (
-        <table className="table table-striped">
-            <thead>
-                <tr>
-                    <th>Manufacturer</th>
-                    <th>Model</th>
-                    <th>Color</th>
-                    <th>Picture Url</th>
-                    <th>Bin</th>
-                </tr>
-            </thead>
-            <tbody>
-                {items.props.shoes.map(shoes => {
-                    return (
-                        <tr key={ shoes.id }>
-                            <td>{ shoes.manufacturer }</td>
-                            <td>{ shoes.model_name }</td>
-                            <td>{ shoes.color }</td>
-                            <td>{ shoes.pictured_url }</td>
-                            <td>{ shoes.bin }</td>
-                            <td><button onClick={deleteItem(shoes.id)}>Delete</button></td>
-                        </tr>
-                    );
-                })}
-            </tbody>
-        </table>
+      <>
+      <table className="table table-striped">
+        <thead>
+          <tr>
+            <th>Manufacturer</th>
+            <th>Model Name</th>
+            <th>Color</th>
+            <th>Picture</th>
+            <th>Bin</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {shoes.map((shoe) => {
+            return (
+              <tr key={shoe.id}>
+                <td>{ shoe.manufacturer }</td>
+                <td>{ shoe.model_name }</td>
+                <td>{ shoe.color }</td>
+                <td><img src={ shoe.pictured_url } /></td>
+                <td>{ shoe.bin.bin_number }</td>
+                <td><button onClick={deleteShoe(shoe.id)} className="button">Delete</button></td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+      </>
     );
-}
+  }
 
 export default ShoesList;

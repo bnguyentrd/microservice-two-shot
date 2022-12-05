@@ -12,6 +12,12 @@ Team:
 
 
 ## Shoes microservice
+Anthony's explanations
+
+
+Explain your models and integration with the wardrobe
+microservice, here.
+
 
 Experiments/Concerns:
     - In poller.py forgot to call get_bin function in poller function. This caused a lot of back and forth concerning a 400 error on insomnia.
@@ -89,11 +95,6 @@ Steps:
 
 
 
-Anthony's explanations
-
-
-Explain your models and integration with the wardrobe
-microservice, here.
 
 ## Hats microservice
 Bobby's explanations

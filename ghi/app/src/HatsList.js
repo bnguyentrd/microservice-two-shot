@@ -64,14 +64,13 @@ function HatsList() {
                 <td>{ hats.color }</td>
                 <td><img src={ hats.picture_url } /></td>
                 <td>{ hats.location }</td>
-                <td><button onClick={deleteHat(hats.id)}>Delete</button></td>
+                <td><button className="circle" onClick={deleteHat(hats.id)}>Delete</button></td>
               </tr>
             );
           })}
         </tbody>
       </table>
       <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <Link to="/hats/new" className="btn btn-primary btn-lg px-4 gap-3">Create a new hat</Link>
       </div>
       </>
     );

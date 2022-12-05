@@ -13,8 +13,17 @@ code {
 }
 
 img {
-  width: 250px;
+  width: 300px;
   border-radius: 10px;
-  height: 200px;
-  opacity: .7;
+  height: 125px;
+  opacity: .9;
+}
+
+.circle {
+  border-radius: 50%;
+  height: 100px;
+  width: 100%;
+  background-color: blue;
+  color: white;
+  font-weight: bold;
 }

@@ -22,6 +22,71 @@ Differences in our form class:
 ShoesForm.js > class ShoesForm constructor >in this.state i have bin: "" and bins: []
 explanation: empty array for the drop down bar and the empty string to show that single piece of information.
 
+Steps:
+1. install Django app into shoes_project/settings.py. and place config into INSTALL_APP list.
+
+2. Create model in shoes_rest/models.py: BinVO and Shoes
+
+3. create view functions: api_list_shoes and api_show_shoe and encoders: BinVOEncoder, ShoeListEncoder, ShoeDetailEncoder for our models
+    -api_list_shoes: GET, POST
+    -api_show_hat: DELETE, GET
+
+4. add new URLs in our apps urls.py
+
+5. include the URLs from app into project directory URLs
+
+6. Check insomnia to verify CRUD is working correctly for Bins
+    - create:
+    {
+	"closet_name": "Closet 1",
+	"bin_number": "1",
+	"bin_size": "3"
+}
+
+    - see if Bins is showing a list
+    - get details of one bin
+
+
+7. Create ShoesList.js with a ShoeList Component (like AttendeeList or MainPage in past project)
+    - create function with return for JSX for the list to be shown on front-end.
+        - within the function create a deleteShoes varibale followed by functions that fetch for specific shoes id that will use a delete method on that data.
+            - once complete we want to reload the front-end automatically to show that shoe has been deleted (useState, useEffect)
+        - create table
+            - map shoes to show data correctly with proper unique key.
+8. Create ShoeForm.js with a ShoeForm component
+    - JSX render contains a form to Create new shoes with the correct inputs and select in order for user to create new shoe entry on front end.
+        - using contructor(props) we set this.sate to the right properties we want to be used and seen.
+            - (manufacturer, model_name, pictured_url, color, bin, bins)
+        - using handle methods for each property in state
+        -   handleSubmit for submission
+            - once submitted the form will clear for future use.
+        - create componentDidmount function to mount data to the correct API
+
+9. Add correct NavLink for navigation bar must import NavLink
+    - Navlink: Shoes, New Shoes
+
+10. Import ShoesList and ShoesForm into App.js
+    - add correct Routes for the Nav in the return for function App(props)
+
+11. create function get_bins for poller.py functionality to retrieve data for shoes_rest microservice
+
+12. CRUD for Shoes microservice in Insomnnia for sanity check
+    - create:
+    {
+	"manufacturer": "Nike",
+	"model_name": "Dunk",
+	"color": "Slam City",
+	"pictured_url": "https://cdn.flightclub.com/750/TEMPLATE/080108/2.jpg",
+	"bin": 1
+}
+
+
+13. Check localhost:3000 to see if Navigation bar is working and routes are correct
+
+14. Git pull, Git add, git commit, git push. Back and forth with partner until our final pull and push to confirm all files are working correctly on main branch.
+
+
+
 
 
 Anthony's explanations
@@ -50,7 +115,7 @@ Step by Step:
 1. We registered the hats app inside hats_project's settings.py, under INSTALLED_APPS.
 2. We created models inside hats api models.py(LocationVO and Hats)
 3. We created view functions to show the list of our models.(LocationVODetailEncoder, HatListEncoder, HatDetailEncoder)
-4. 
+4.
 
 
 

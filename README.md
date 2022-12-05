@@ -7,7 +7,7 @@ Team:
 
 ## Design
 Webpage > shop > categories > sizes
-![alt text](https://excalidraw.com/#room=fdfee44bb4146706a6dc,cmWNOcH_CQb0_Gmh8YgKJg)
+![alt text](images/Untitled-2022-12-05-1446.png)
 
 
 

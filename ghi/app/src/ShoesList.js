@@ -11,9 +11,11 @@ function ShoesList() {
         setShoes(listShoes.shoes);
       }
     };
+
     useEffect(() => {
       getShoes();
     }, []);
+
     const deleteShoe = (id) => async () => {
       try {
         const url = `http://localhost:8080/api/shoes/${id}/`;
